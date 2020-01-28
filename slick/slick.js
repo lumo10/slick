@@ -1027,6 +1027,7 @@
                         if( _.options.pauseOnFocus ) {
                             if ($sf.is(':focus')) {
                                 _.focussed = true;
+                                _.$slider.toggleClass('slick-paused', _.focussed);
                                 _.autoPlay();
                             }
                         }
@@ -1041,6 +1042,7 @@
                     // When a blur occurs on any elements within the slider we become unfocused
                     if( _.options.pauseOnFocus ) {
                         _.focussed = false;
+                        _.$slider.toggleClass('slick-paused', _.focussed);
                         _.autoPlay();
                     }
                 }
@@ -1317,6 +1319,7 @@
         if ( _.options.autoplay ) {
 
             _.paused = false;
+            _.$slider.toggleClass('slick-paused', _.paused);
             _.autoPlay();
 
         }
@@ -1693,6 +1696,7 @@
 
         _.autoPlayClear();
         _.paused = true;
+        _.$slider.toggleClass('slick-paused', _.paused);
 
     };
 
@@ -1705,6 +1709,7 @@
         _.paused = false;
         _.focussed = false;
         _.interrupted = false;
+        _.$slider.toggleClass('slick-paused', _.paused);
 
     };
 
@@ -1966,6 +1971,7 @@
         _.focusHandler();
 
         _.paused = !_.options.autoplay;
+        _.$slider.toggleClass('slick-paused', _.paused);
         _.autoPlay();
 
         _.$slider.trigger('reInit', [_]);
@@ -2468,6 +2474,7 @@
             _.autoPlay();
         }
         _.interrupted = toggle;
+        _.$slider.toggleClass('slick-paused', _.interrupted);
 
     };
 
@@ -2685,6 +2692,7 @@
         }
 
         _.interrupted = false;
+        _.$slider.toggleClass('slick-paused', _.interrupted);
         _.shouldClick = ( _.touchObject.swipeLength > 10 ) ? false : true;
 
         if ( _.touchObject.curX === undefined ) {
@@ -2874,6 +2882,7 @@
             touches;
 
         _.interrupted = true;
+        _.$slider.toggleClass('slick-paused', _.interrupted);
 
         if (_.touchObject.fingerCount !== 1 || _.slideCount <= _.options.slidesToShow) {
             _.touchObject = {};
@@ -3012,6 +3021,8 @@
                 _.interrupted = false;
 
             }
+
+            _.$slider.toggleClass('slick-paused', _.interrupted);
 
         }
 
